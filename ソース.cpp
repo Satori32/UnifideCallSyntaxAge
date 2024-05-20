@@ -56,7 +56,13 @@ template<class T,class I>
 T& Get(Graph<T, I>& In) { return In.M->at(In.Now).Data; }
 
 template<class T,class I>
-bool Drop(Graph<T, I>& In, I Idx ) { return In.M->erase(In.M->find(Idx)); }
+bool Drop(Graph<T, I>& In, I Idx ) { return  In.M->erase(In.M->find(Idx)) == In.M->end(); }
+
+template<class T,class I>
+bool Add(Graph<T, I>& In, I N) {
+	auto TTT = (*In.M)[N];
+	return In.IsArrive(N);
+}
 
 int main() {
 	Graph<int> G = { 0, };
@@ -66,7 +72,7 @@ int main() {
 	G[0];
 
 	auto X = Get(G);// G.Get();
-	bool Y = Drop(G, 0);//G.Drop(0);//why compile error.
-
+	bool Y = Drop<int,std::intmax_t>(G, 0);//G.Drop(0);//why compile error. error solve but duty.
+	auto Z = Add<int,std::intmax_t>(G, 128);//G.Add(128);
 	return 0;
 }
