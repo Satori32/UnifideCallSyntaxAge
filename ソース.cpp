@@ -1,5 +1,5 @@
 #include <iostream>
-#include <map>
+#include <unordered_map>
 #include <cstdint>
 #include <vector>
 #include <memory>
@@ -36,7 +36,7 @@ struct Graph {
 	}
 
 	Idx Now = 0;
-	typedef std::map<Idx, Data<T>> MAP;
+	typedef std::unordered_map<Idx, Data<T>> MAP;
 	std::shared_ptr<MAP> M = std::make_shared<MAP>();
 };
 
